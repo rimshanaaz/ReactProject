@@ -5,6 +5,7 @@ const ExpenseForm = (props) => {
     const [enteredTitle,setEnteredTitle] = useState('') ;
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
+
     //Using previous state method
     /*const [userInput, setUserInput] = useState({
         enteredTitle: '',
@@ -40,7 +41,7 @@ const ExpenseForm = (props) => {
 
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date(enteredDate)
         }
 
@@ -67,10 +68,14 @@ const ExpenseForm = (props) => {
                     <input type = "date" value={enteredDate} min = "2019-01-01" max= "202-12-31" onChange={dateChangeHandler}/>
                 </div>
             </div>
+            <br/>
             <div className = "new-expense__actions">
+                <button onClick = {props.onCancel}>Cancel</button>
                 <button type="submit">Add Expense</button>
             </div>
+
         </form>
+        
     );
 }
 
